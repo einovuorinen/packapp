@@ -1,10 +1,10 @@
 // jos nimessä on . tai + riippuvuudet ja onclick ei toimi
 
-
 const Package = (package) => {
     return (`<div class="packageElement">
         <h1 id="h_${package.key}">${package.name}</h1>
         <div class="info" id="i_${package.key}" style="display:none">
+            <h2>description</h2>
             <p class="desc" id="desc">${package.description}</p>
             <h2>dependencies</h2>
             <div id="dp_${package.key}" ></div>
@@ -61,11 +61,11 @@ var openFile = function(event) {
         });
         p.dependsOn.forEach(d => {
             var pack = packages.find(p => p.name == d)
-            if (pack) $(`#do_${p.key}`).append(`<p class="l_${pack.key}">${d}</p>`)
+            if (pack) $(`#do_${p.key}`).append(`<p class="l_${pack.key} clickable">${d}</p>`)
         })
         p.dependencies.forEach(d => {
             var pack = packages.find(p => p.name == d)
-            if (pack) $(`#dp_${p.key}`).append(`<p class="l_${pack.key}">${d}</p>`)
+            if (pack) $(`#dp_${p.key}`).append(`<p class="l_${pack.key} clickable">${d}</p>`)
         })  
       })
       packages.forEach(p => {
